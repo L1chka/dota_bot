@@ -1,10 +1,14 @@
 from aiogram import Bot, Dispatcher, types, executor
 from config import TELEGRAM_TOKEN
 from keyboard.keyboards import  get_keyboard,get_keyboard_2
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 bot = Bot(token = TELEGRAM_TOKEN)
 dp = Dispatcher(bot)
 
-
+keyboard_inline = InlineKeyboardMarkup(row_width= 1)
+but_inline = InlineKeyboardButton(' смок',url='https://d2db.ru/database/read/smoke-of-deceit.html')
+but_inline_2 = InlineKeyboardButton(' смок',url='https://d2db.ru/database/read/smoke-of-deceit.html')
+keyboard_inline.add(but_inline, but_inline_2)
 async def set_command(bot: Bot):
     commands = [
         types.BotCommand(command='/start', description=' команда для того что бы купить бластоун '),
@@ -35,11 +39,11 @@ async def button_4_click(message: types.Message):
 
 @dp.message_handler(lambda message: message.text == 'ульта')
 async def button_5_click(message: types.Message):
-    await message.reply('ты прожал ульту')
+    await message.reply('ты прожал ульту              супер мега насрал ')
 
 @dp.message_handler(lambda message: message.text == 'SF')
 async def button_6_click(message: types.Message):
-    await bot.send_photo(message.chat.id, photo='https://pm1.aminoapps.com/7266/c551b64f4011e11657ff9f66755c4ad3574ca482r1-564-846v2_uhq.jpg', caption= 'Держи гуленыш недоделаный ')
+    await bot.send_photo(message.chat.id, photo='https://pm1.aminoapps.com/7266/c551b64f4011e11657ff9f66755c4ad3574ca482r1-564-846v2_uhq.jpg', caption= 'Держи гуленыш недоделаный ',reply_markup= keyboard_inline)
 
 @dp.message_handler(lambda message: message.text == 'перейти на 2 клаву')
 async def button_7_click(message: types.Message):
